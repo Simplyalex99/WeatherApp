@@ -1,0 +1,159 @@
+
+*{
+
+margin: 0;
+padding: 0;
+
+}
+
+.container{
+
+    margin: 0 auto;
+ 
+    text-align: center;
+
+background-color: #FFF;
+
+
+
+}
+
+.column-1{
+
+
+}
+.column-2{
+
+
+
+}
+
+.image-container{
+
+/*border: 2px solid red;*/
+padding-top:  30px;
+overflow: hidden;
+
+padding-bottom: 37px;
+}
+
+.image-resize{
+
+
+width: 100%; /*arrow buttons must be relative to image*/
+
+
+
+}
+.search_box{
+position: absolute;
+left: 50%;
+top: 20%;
+height: 50px;
+width:500px;
+color:white;
+font-size:25px;
+text-align: center;
+background: rgba(0,0,0,0.1);
+transform: translate(-50%,-50%);
+border-radius: 30px;
+}
+.shiftSearchIcon{
+
+top: 170px;
+
+position: absolute;
+/*right: 600px;  have icon stay relative to search bar growth or size*/
+
+
+}
+
+.navBar{
+
+width:100px;
+
+height:100px;
+transition: 0.5s;
+box-shadow:  -2px -2px 0 rbga(255,255,255,0.5);
+
+
+}
+
+.leftButton, .rightButton{
+width: 100px;
+height: 100px;
+transition: 0.5s;
+
+top: 500px;
+
+box-shadow: -2px -2px 0 rgba(255,255,255,0.5);
+position: absolute;
+
+}
+.leftButton{
+    transform: rotate(-45deg);
+left: 20px;
+
+}
+.rightButton{
+transform: rotate(145deg);
+
+right: 20px;
+}
+.rightButton:hover , .leftButton:hover{
+
+box-shadow: -2px -2px 0 rgba(255,255,255,1);
+
+
+}
+
+
+
+
+
+
+
+.verticalBarContainer{
+
+position: absolute;
+    width: 10%;
+    top: 20%;
+    left:29%;
+
+    transform: translate(-50%,-50%);
+    
+    }
+    ul{
+
+        list-style: none;
+
+     
+
+    }
+
+
+ul li{
+    background: rgba(0,0,0,0.1);
+    color:white;
+
+
+    opacity: 0.8;
+
+}
+
+ul li:hover{
+
+background-color:rgba(0,0,0,0.2);
+
+
+
+
+}
+ul li ul li{
+
+    display:none;
+}
+ul li:hover ul li{
+
+    display: block;
+}
