@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-
-function DropdownBar(){
+export class DropdownBar extends Component{
+render(){
 
 return(
 
@@ -13,9 +13,9 @@ return(
     </a>
     <ul>
 
-       <li>City name</li>
-       <li>Postal Code</li>
-       <li>Location</li>
+    <li  id = "text1" onClick = {() => this.props.updateSearchText(document.getElementById("text1").innerHTML)}>City name</li> 
+       <li id = "text2" onClick = {() => this.props.updateSearchText(document.getElementById("text2").innerHTML)}>Postal Code</li>
+       <li id = "text3" onclick = {() => this.props.updateSearchText(document.getElementById("text3").innerHTML)}>Location</li>
 
     </ul>
    </li>
@@ -34,7 +34,7 @@ return(
 
 
 }
-
+}
 
 
 export default DropdownBar;
