@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import searchIcon from "./MountainImages/searchIcon.png";
 import DropdownBar from "./DropdownBar.js";
-import weatherData from "./weatherData.js";
+import WeatherData from "./weatherData.js";
 import { checkGeolocationIsSupported, getPosition } from "./locationFinder.js";
 
 export class SearchBar extends Component {
@@ -12,7 +12,7 @@ export class SearchBar extends Component {
 
     this.state = {
       searchMessage: "search by city",
-
+      userResponse: "",
       weather: {
         location: {
           latitude: "",
@@ -42,18 +42,26 @@ export class SearchBar extends Component {
       console.log("error geolocation no supported");
     }
   }
+  updateUserResponseValue = (e) => {
+    this.setState({
+      userResponse: e.target.value,
+    });
+  };
 
   render() {
+    const { userResponse,weather,searchMessage } = this.state;
     return (
+        
       <div>
+          <form>
         <input
           type="text"
           placeholder=" search..."
           className="search_box"
-          value=""
-          id="queryResponse"
+          value={userResponse}
+          onChange = {this.updateUserResponseValue}
         ></input>
-
+</form>
         <DropdownBar
           updateSearchText={(e) => this.updateSearchMessage(e)}
           getLocation={() => this.getLocation()}
@@ -61,10 +69,10 @@ export class SearchBar extends Component {
         <div>
           <img src={searchIcon} className="shiftSearchIcon"></img>
         </div>
-        <weatherData
-          weather={this.state.weather}
-          searchMethodText={this.state.searchMessage}
-          userResponse={document.getElementById("queryResponse")}
+        <WeatherData
+          weather={weather}
+          searchMethodText={searchMessage}
+          userResponse={userResponse}
         />
       </div>
     );
