@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 //Add conditional render, pass in props and boolean and call this class in searchBar
-export class DisplayData extends Component() {
+export class DisplayData extends Component {
   render() {
     const { hitOnEnter, weather } = this.props;
     return hitOnEnter ? (
