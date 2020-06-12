@@ -108,12 +108,18 @@ ul li ul li {
 ul li:hover ul li {
   display: block;
 }
-
+.displayBoxContainer {
+  position: absolute;
+  top: 20%;
+  margin: 0 auto;
+  left: 30%;
+  width: 40%;
+}
 .displayText {
   color: white;
   overflow: hidden;
 }
-.menu-btn {
+.close-btn-Frame {
   position: relative;
   display: flex;
   justify-content: center;
@@ -124,7 +130,7 @@ ul li:hover ul li {
   transition: all 0.5s ease-in-out;
   border: 3px solid #fff;
 }
-.menu-btn__burger {
+.close-btn {
   width: 40px;
   height: 2px;
   /* background: #fff;*/
@@ -133,8 +139,8 @@ ul li:hover ul li {
   transition: all 0.5s ease-in-out;
 }
 
-.menu-btn__burger::before,
-.menu-btn__burger::after {
+.close-btn::before,
+.close-btn::after {
   content: "";
   position: absolute;
   width: 40px;
@@ -144,26 +150,14 @@ ul li:hover ul li {
   box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
 }
 
-.menu-btn__burger::before {
+.close-btn::before {
   transform: translateY(-8px);
 
   transform: rotate(45deg);
 }
-.menu-btn__burger::after {
+.close-btn::after {
   transform: translateY(8px);
   transform: rotate(-45deg);
-}
-
-.displayBoxContainer {
-  position: absolute;
-  top: 20%;
-  margin: 0 auto;
-  left: 30%;
-  width: 40%;
-}
-
-#search-container {
-  position: relative;
 }
 
 .displayBox {
@@ -179,8 +173,3 @@ ul li:hover ul li {
 .displayBox:before {
   filter: blur(4px);
 }
-
-/* @media (max-width: 600px ) {
-      #bg { padding: 10px; }
-      #search-bg { background-position: center -10px; }
-    }*/
