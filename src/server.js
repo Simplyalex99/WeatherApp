@@ -2,7 +2,7 @@ const express = require('express');
 
 const fetch = require('node-fetch');
 const app = express();
-const key = process.env.API_KEY;//"82005d27a116c2880c8f0fcb866998a0";
+const key = process.env.API_KEY;
 require ('dotenv').config();
 
 
