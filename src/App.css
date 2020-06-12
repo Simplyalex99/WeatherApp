@@ -108,3 +108,79 @@ ul li ul li {
 ul li:hover ul li {
   display: block;
 }
+
+.displayText {
+  color: white;
+  overflow: hidden;
+}
+.menu-btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px; /*80px;*/
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  border: 3px solid #fff;
+}
+.menu-btn__burger {
+  width: 40px;
+  height: 2px;
+  /* background: #fff;*/
+  border-radius: 5px;
+  box-shadow: none;
+  transition: all 0.5s ease-in-out;
+}
+
+.menu-btn__burger::before,
+.menu-btn__burger::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 3px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+}
+
+.menu-btn__burger::before {
+  transform: translateY(-8px);
+
+  transform: rotate(45deg);
+}
+.menu-btn__burger::after {
+  transform: translateY(8px);
+  transform: rotate(-45deg);
+}
+
+.displayBoxContainer {
+  position: absolute;
+  top: 20%;
+  margin: 0 auto;
+  left: 30%;
+  width: 40%;
+}
+
+#search-container {
+  position: relative;
+}
+
+.displayBox {
+  /* use this for box z-index: 100;  */
+  position: relative;
+  margin: 0 auto;
+  height: 500px;
+  padding: 20px;
+  background: rgb(34, 34, 34); /* for IE */
+  background: rgba(34, 34, 34, 0.75);
+}
+
+.displayBox:before {
+  filter: blur(4px);
+}
+
+/* @media (max-width: 600px ) {
+      #bg { padding: 10px; }
+      #search-bg { background-position: center -10px; }
+    }*/

@@ -4,13 +4,19 @@ import searchIcon from "./MountainImages/searchIcon.png";
 import DropdownBar from "./DropdownBar.js";
 import WeatherData from "./weatherData.js";
 import { checkGeolocationIsSupported, getPosition } from "./locationFinder.js";
-
+import {
+  requestDataByLocation,
+  requestDataByZIPCode,
+  requestDataByCityName,
+} from "./WeatherAPI.js";
+import DisplayData from "./DisplayData.js";
 export class SearchBar extends Component {
   constructor() {
     // pass in weather as prop and searchMessage to weatherData.
     super();
 
     this.state = {
+      displayDataOnEnter: false,
       searchMessage: "search by city",
       userResponse: "",
       weather: {
@@ -18,13 +24,27 @@ export class SearchBar extends Component {
           latitude: "",
           longitude: "",
         },
-
+        description: "",
         temperature: "",
         city: "",
         country: "",
       },
     };
   }
+  getDataBySearchMethod() {
+    // Store data in results and have a different component or css file display the css box with html from results or object
+    var searchMethod = this.state.searchMessage;
+    var results;
+    if (searchMethod === "search by Location") {
+      var location = this.state.location;
+      requestDataByLocation(location);
+    } else if (searchMethod === "search by City name") {
+      requestDataByCityName();
+    } else {
+      requestDataByZIPCode();
+    }
+  }
+
   updateSearchMessage(message) {
     this.setState = {
       searchMessage: "search by " + message,
@@ -49,19 +69,23 @@ export class SearchBar extends Component {
   };
 
   render() {
-    const { userResponse,weather,searchMessage } = this.state;
+    const {
+      userResponse,
+      searchMessage,
+      weather,
+      displayDataOnEnter,
+    } = this.state;
     return (
-        
       <div>
-          <form>
-        <input
-          type="text"
-          placeholder=" search..."
-          className="search_box"
-          value={userResponse}
-          onChange = {this.updateUserResponseValue}
-        ></input>
-</form>
+        <form onSubmit={this.getDataBySearchMethod}>
+          <input
+            type="text"
+            placeholder={searchMessage}
+            className="search_box"
+            value={userResponse}
+            onChange={this.updateUserResponseValue}
+          ></input>
+        </form>
         <DropdownBar
           updateSearchText={(e) => this.updateSearchMessage(e)}
           getLocation={() => this.getLocation()}
@@ -69,11 +93,7 @@ export class SearchBar extends Component {
         <div>
           <img src={searchIcon} className="shiftSearchIcon"></img>
         </div>
-        <WeatherData
-          weather={weather}
-          searchMethodText={searchMessage}
-          userResponse={userResponse}
-        />
+        <DisplayData hitOnEnter={displayDataOnEnter} weather={weather} />
       </div>
     );
   }
