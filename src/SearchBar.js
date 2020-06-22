@@ -78,21 +78,22 @@ export class SearchBar extends Component {
     return (
       <div>
         <form onSubmit={this.getDataBySearchMethod}>
-          <input
-            type="text"
-            placeholder={searchMessage}
-            className="search_box"
-            value={userResponse}
-            onChange={this.updateUserResponseValue}
-          ></input>
+          <div>
+            <input
+              type="text"
+              placeholder={searchMessage}
+              className="search_box"
+              value={userResponse}
+              onChange={this.updateUserResponseValue}
+            ></input>
+            <img src={searchIcon} className="search-icon"></img>
+          </div>{" "}
         </form>
         <DropdownBar
           updateSearchText={(e) => this.updateSearchMessage(e)}
           getLocation={() => this.getLocation()}
         />
-        <div>
-          <img src={searchIcon} className="shiftSearchIcon"></img>
-        </div>
+
         <DisplayData hitOnEnter={displayDataOnEnter} weather={weather} />
       </div>
     );
