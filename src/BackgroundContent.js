@@ -1,26 +1,38 @@
-import React, { Component } from 'react';
-import './App.css';
-import defaultImage from './MountainImages/img1.png';
-import NavBar from './NavBar.js';
-function Background(){
+import React, { Component } from "react";
+import "./App.css";
 
-return(
+import NavBar from "./NavBar.js";
+import { setImage } from "./ImageSlider.js";
+import defaultImg from "./MountainImages/image1.png";
+// import all images in IMageSlider and return that; refer to history stackOverFlow
+export class Background extends Component {
+  constructor() {
+    super();
+    this.state = {
+      imageFile: defaultImg,
+    };
+  }
 
-<div className = "image-container">
+  updateImage =(e)=> {
+    var imagePathName = setImage(e);
+ 
 
+    this.setState({
+      imageFile: imagePathName,
+    });
+  }
 
-<img src = {defaultImage} alt = "mountain image" className = "image-resize"/>
+  render() {
 
-<NavBar/>
-</div>
-);
+    const { imageFile } = this.state;
+   
+    return (
+      <div className="image-container">
+        <img src={imageFile} alt="mountain image" className="image-resize" />
 
-
-
-
-
+        <NavBar updateImage={this.updateImage} />
+      </div>
+    );
+  }
 }
-
-
-
 export default Background;
