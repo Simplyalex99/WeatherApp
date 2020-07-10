@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import "./App.css";
 //Add conditional render, pass in props and boolean and call this class in searchBar
 export class DisplayData extends Component {
+  closeBox = () => {
+    document.getElementById("result").style.display = "none";
+  };
   render() {
-    const { hitOnEnter, weather } = this.props;
+    const { hitOnEnter, weather, errorResult } = this.props;
     var failComment = <p>Sorry! An unexpected error has occured </p>;
     var successComment = (
       <div>
@@ -16,10 +19,10 @@ export class DisplayData extends Component {
     );
     var results = errorResult ? failComment : successComment;
     return hitOnEnter ? (
-      <div class="displayBoxContainer">
+      <div class="displayBoxContainer" id="result">
         <div class="displayBox">
-          <div class="close-btn-Frame">
-            <div class="close-btn"></div>
+          <div class="close-btn-Frame" onClick={this.closeBox}>
+            <div class="close-btn" onClick={this.closeBox}></div>
           </div>
           {results}
         </div>

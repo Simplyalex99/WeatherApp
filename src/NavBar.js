@@ -1,26 +1,36 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
-function NavBar(){
+import { setImage } from "./ImageSlider.js";
 
-return(
+export class NavBar extends Component {
+  handleMouseEvent(e) {
+    const interval = setInterval(() => {
+      this.props.updateImage(e);
+    }, 1500);
 
- <div> 
-  <div className = "leftButton">
-  </div>   
-  <div className = "rightButton">
-  </div> 
+    this.props.updateTimer(interval);
+  }
 
-</div>
+  pauseMouseEvent() {
+    this.props.stopTimer();
+  }
 
-);
-
-
-
-
-
+  render() {
+    return (
+      <React.Fragment>
+        <div
+          className="leftButton"
+          onMouseOver={() => this.props.updateImage(true)}
+          onMouseLeave={() => this.pauseMouseEvent()}
+        ></div>
+        <div
+          className="rightButton"
+          onMouseOver={() => this.props.updateImage(false)}
+          onMouseLeave={() => this.pauseMouseEvent()}
+        ></div>
+      </React.Fragment>
+    );
+  }
 }
-
-
-
 export default NavBar;

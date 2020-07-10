@@ -3,40 +3,14 @@ import "./App.css";
 export class DropdownBar extends Component {
   render() {
     return (
-      <div className="verticalBarContainer">
+      <div className="infoIconContainer">
         <ul>
           <li>
-            <a>Search options</a>
+            <p className="questionMark"> i</p>
             <ul>
-              <li
-                id="text1"
-                onClick={() =>
-                  this.props.updateSearchText(
-                    document.getElementById("text1").innerHTML
-                  )
-                }
-              >
-                City name
-              </li>
-              <li
-                id="text2"
-                onClick={() =>
-                  this.props.updateSearchText(
-                    document.getElementById("text2").innerHTML
-                  )
-                }
-              >
-                Postal Code
-              </li>
-              <li
-                id="text3"
-                onclick={() =>
-                  this.props.updateSearchText(
-                    document.getElementById("text3").innerHTML
-                  )
-                }
-              >
-                Location
+              <li>
+                Description : Valid city name Toronto, valid zipCode 9 digit
+                with hyphen or 5 digit
               </li>
             </ul>
           </li>

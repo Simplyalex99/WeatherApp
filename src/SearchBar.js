@@ -2,22 +2,22 @@ import React, { Component } from "react";
 import "./App.css";
 import searchIcon from "./MountainImages/searchIcon.png";
 import DropdownBar from "./DropdownBar.js";
-import WeatherData from "./weatherData.js";
+
 import { checkGeolocationIsSupported, getPosition } from "./locationFinder.js";
-import {
-  requestDataByLocation,
-  requestDataByZIPCode,
-  requestDataByCityName,
-} from "./WeatherAPI.js";
+import { queryWeather } from "./WeatherAPI.js";
 import DisplayData from "./DisplayData.js";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // add modules in github
+
 export class SearchBar extends Component {
   constructor() {
     // pass in weather as prop and searchMessage to weatherData.
     super();
 
     this.state = {
+      validData: false,
       displayDataOnEnter: false,
-      searchMessage: "search by city",
+      closeOnEnter: false,
       userResponse: "",
       weather: {
         location: {
@@ -31,19 +31,19 @@ export class SearchBar extends Component {
       },
     };
   }
-  getDataBySearchMethod() {
-    // Store data in results and have a different component or css file display the css box with html from results or object
-    var searchMethod = this.state.searchMessage;
-    var results;
-    if (searchMethod === "search by Location") {
-      var location = this.state.location;
-      requestDataByLocation(location);
-    } else if (searchMethod === "search by City name") {
-      requestDataByCityName();
-    } else {
-      requestDataByZIPCode();
-    }
-  }
+  getCurrentWeather = () => {
+    var results = queryWeather(this.state.userResponse);
+
+    this.setState({
+      weather: {
+        location: results.coordinates,
+        description: results.description,
+        temperature: results.temp_Value,
+        country: results.country,
+      },
+      displayDataOnEnter: true,
+    });
+  };
 
   updateSearchMessage(message) {
     this.setState = {
@@ -56,7 +56,7 @@ export class SearchBar extends Component {
       let coordinates = getPosition();
 
       this.setState({
-        location: coordinates,
+        weather: { location: coordinates },
       });
     } else {
       console.log("error geolocation no supported");
@@ -71,31 +71,44 @@ export class SearchBar extends Component {
   render() {
     const {
       userResponse,
-      searchMessage,
+
       weather,
       displayDataOnEnter,
+      validData,
+      closeOnEnter,
     } = this.state;
     return (
-      <div>
-        <form onSubmit={this.getDataBySearchMethod}>
-          <div>
+      <React.Fragment>
+        <div className="search_box">
+          <input
+            type="text"
+            placeholder="Type to search"
+            className="search_txt"
+            value={userResponse}
+            onChange={this.updateUserResponseValue}
+          ></input>
+          <FontAwesomeIcon
+            icon={faSearch}
+            className="search-btn"
+          ></FontAwesomeIcon>
+          <div className="submit-btn">
             <input
-              type="text"
-              placeholder={searchMessage}
-              className="search_box"
-              value={userResponse}
-              onChange={this.updateUserResponseValue}
+              type="submit"
+              onSubmit={this.getCurrentWeather}
+              onClick={this.getCurrentWeather}
             ></input>
-            <img src={searchIcon} className="search-icon"></img>
-          </div>{" "}
-        </form>
-        <DropdownBar
-          updateSearchText={(e) => this.updateSearchMessage(e)}
-          getLocation={() => this.getLocation()}
-        />
+          </div>
+        </div>
 
-        <DisplayData hitOnEnter={displayDataOnEnter} weather={weather} />
-      </div>
+        <DropdownBar />
+
+        <DisplayData
+          hitOnEnter={displayDataOnEnter}
+          weather={weather}
+          errorResult={validData}
+          clickOnCloseButton={closeOnEnter}
+        />
+      </React.Fragment>
     );
   }
 }

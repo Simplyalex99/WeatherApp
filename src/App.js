@@ -15,11 +15,11 @@ class App extends Component {
     return (
       <div className="container">
         <Title />
-
+<div>
         <Background />
 
         <SearchButton />
-
+</div>
         <Footer />
       </div>
     );

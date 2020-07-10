@@ -6,7 +6,7 @@
 .container {
   margin: 0 auto;
 
-  text-align: center;
+  /*text-align: center; causes shift in alignment to the frame of the close button in displayData component*/
 
   background-color: #fff;
 }
@@ -31,7 +31,7 @@
   /*border: 2px solid red;*/
   padding-top: 30px;
   overflow: hidden;
-
+  position: relative;
   padding-bottom: 37px;
 }
 
@@ -44,19 +44,43 @@
   top: 20%;
   height: 50px;
   width: 500px;
-  color: white;
-  font-size: 25px;
-  text-align: center;
+
   background: rgba(0, 0, 0, 0.1);
   transform: translate(-50%, -50%);
   border-radius: 30px;
+  padding: 5px;
 }
-.search-icon {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 20%;
-  left: 70%;
-  /*right: 600px;  have icon stay relative to search bar growth or size*/
+.search_txt {
+  color: white;
+  font-size: 25px;
+  text-align: center;
+
+  transition: 0.4s;
+  background: none;
+  outline: none;
+  border: none;
+
+  line-height: 40px;
+}
+.search-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  float: right;
+  overflow: hidden;
+}
+
+.search-btn:hover {
+  cursor: pointer;
+}
+.submit-btn {
+  display: flex;
+  justify-content: left;
+  float: right;
+  padding: 6px;
+  transform: translate(35%, 15%);
+  /*visibility: hidden;*/
 }
 
 .navBar {
@@ -92,20 +116,22 @@
   box-shadow: -2px -2px 0 rgba(255, 255, 255, 1);
 }
 
-.verticalBarContainer {
-  position: absolute;
-  width: 10%;
-  top: 20%;
-  left: 29%;
+.infoIconContainer {
+  width: 30%;
 
+  top: 10%;
+
+  left: 19%;
+  position: absolute;
   transform: translate(-50%, -50%);
 }
 ul {
   list-style: none;
+  position: absolute;
 }
 
 ul li {
-  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
   color: white;
 
   opacity: 0.8;
@@ -116,21 +142,45 @@ ul li:hover {
 }
 ul li ul li {
   display: none;
+  border-radius: 0%;
 }
 ul li:hover ul li {
   display: block;
 }
+
+.questionMark {
+  width: 20px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: none; /*2px solid black*/
+  text-align: center;
+}
 .displayBoxContainer {
   position: absolute;
-  top: 20%;
+  top: 40%;
   margin: 0 auto;
   left: 30%;
   width: 40%;
+  display: block;
 }
 .displayText {
   color: white;
-  overflow: hidden;
 }
+
+.displayBox {
+  /* use this for box z-index: 100;  */
+  position: relative;
+  margin: 0 auto;
+  height: 50%;
+  padding: 20px;
+  background: rgb(34, 34, 34); /* for IE */
+  background: rgba(34, 34, 34, 0.75);
+}
+
+.displayBox:before {
+  filter: blur(4px);
+}
+
 .close-btn-Frame {
   position: relative;
   display: flex;
@@ -141,6 +191,9 @@ ul li:hover ul li {
   cursor: pointer;
   transition: all 0.5s ease-in-out;
   border: 3px solid #fff;
+}
+.close-btn-Frame:hover {
+  background: red;
 }
 .close-btn {
   width: 40px;
@@ -171,17 +224,6 @@ ul li:hover ul li {
   transform: translateY(8px);
   transform: rotate(-45deg);
 }
-
-.displayBox {
-  /* use this for box z-index: 100;  */
-  position: relative;
-  margin: 0 auto;
-  height: 500px;
-  padding: 20px;
-  background: rgb(34, 34, 34); /* for IE */
-  background: rgba(34, 34, 34, 0.75);
-}
-
-.displayBox:before {
-  filter: blur(4px);
+.resetBoxContainer {
+  display: none;
 }
