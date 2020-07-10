@@ -13,7 +13,7 @@ var pointer = 0;
 var images = [];
 
 var imageFileName;
-const TOTAL_IMAGES = 11; // Total images 10 inclusive
+const TOTAL_IMAGES = 10; // Total images 10 inclusive
 
 images[0] = image1;
 images[1] = image2;
