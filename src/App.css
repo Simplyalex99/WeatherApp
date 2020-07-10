@@ -83,6 +83,16 @@
   /*visibility: hidden;*/
 }
 
+.submit-btn-adder {
+  background: rgba(0, 0, 0, 0);
+  border: none;
+  color: rgba(0, 0, 0, 0);
+}
+
+.submit-btn:hover {
+  cursor: pointer;
+}
+
 .navBar {
   width: 100px;
 
@@ -97,7 +107,7 @@
   height: 100px;
   transition: 0.5s;
 
-  top: 500px;
+  top: 50%;
 
   box-shadow: -2px -2px 0 rgba(255, 255, 255, 0.5);
   position: absolute;

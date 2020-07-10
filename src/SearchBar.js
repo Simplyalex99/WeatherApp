@@ -93,6 +93,7 @@ export class SearchBar extends Component {
           ></FontAwesomeIcon>
           <div className="submit-btn">
             <input
+            className = "submit-btn-adder"
               type="submit"
               onSubmit={this.getCurrentWeather}
               onClick={this.getCurrentWeather}
