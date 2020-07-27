@@ -16,20 +16,28 @@
   src: url("./Gingham/Gingham.woff2") format("woff2");
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+
+
+
 .column-1 {
 }
 .column-2 {
 }
 .titlePage {
-  font-family: "Gingham";
-  font-variation-settings: "wght" 300, "wdth" 150;
+ font-family:  'Montserrat', sans-serif;
   text-align: center;
   font-stretch: wider;
+  position: absolute;
+  top:5%;
+  left:30%;
+  right:30%;
 }
 
 .image-container {
-  /*border: 2px solid red;*/
-  padding-top: 30px;
+
   overflow: hidden;
   position: relative;
   padding-bottom: 37px;
@@ -59,7 +67,7 @@
   background: none;
   outline: none;
   border: none;
-
+font-family:'Roboto', sans-serif ;
   line-height: 40px;
 }
 .search-btn {

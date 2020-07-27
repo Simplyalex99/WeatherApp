@@ -13,13 +13,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="image-container">
         <Title />
-<div>
+
         <Background />
 
         <SearchButton />
-</div>
+
         <Footer />
       </div>
     );

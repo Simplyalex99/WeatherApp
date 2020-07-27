@@ -38,7 +38,7 @@ export class Background extends Component {
     const { imageFile } = this.state;
 
     return (
-      <div className="image-container">
+      <div>
         <img src={imageFile} alt="mountain image" className="image-resize" />
 
         <NavBar updateImage={this.updateImage}   updateTimer = {this.updateTimer} stopTimer = {this.stopTimer}/>

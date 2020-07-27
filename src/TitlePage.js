@@ -5,7 +5,7 @@ function Title(){
 
 return(
 
-    <div className  = "column-1">
+    <div >
     <h1 className  = "titlePage">Weather App</h1>
     </div>
 
