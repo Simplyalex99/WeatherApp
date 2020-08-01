@@ -1,17 +1,15 @@
 import React, { Component } from "react";
 import "./App.css";
-import searchIcon from "./MountainImages/searchIcon.png";
+
 import DropdownBar from "./DropdownBar.js";
 
-import { checkGeolocationIsSupported, getPosition } from "./locationFinder.js";
-import { queryWeather } from "./WeatherAPI.js";
 import DisplayData from "./DisplayData.js";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // add modules in github
 
 export class SearchBar extends Component {
   constructor() {
-    // pass in weather as prop and searchMessage to weatherData.
+
     super();
 
     this.state = {
@@ -31,19 +29,27 @@ export class SearchBar extends Component {
       },
     };
   }
-  getCurrentWeather = () => {
-    var results = queryWeather(this.state.userResponse);
-
-    this.setState({
-      weather: {
-        location: results.coordinates,
-        description: results.description,
-        temperature: results.temp_Value,
-        country: results.country,
-      },
-      displayDataOnEnter: true,
-    });
-  };
+  getCurrentWeather = async ()=> {
+    
+    const API_KEY = "";
+    var city = this.state.userResponse;
+    let api_url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
+    var response = await fetch(api_url);
+    var body = await response.json();
+ const KELVIN = 273;
+ 
+ this.setState({
+   weather: {description : body.weather[0].description,
+   temperature : Math.floor(body.main.temp - KELVIN),
+ location  : body.coord,
+   country : body.sys.country,
+   city: city
+   }, 
+   displayDataOnEnter:true
+ });
+     
+   }
+ 
 
   updateSearchMessage(message) {
     this.setState = {
@@ -52,15 +58,7 @@ export class SearchBar extends Component {
   }
 
   getLocation() {
-    if (checkGeolocationIsSupported()) {
-      let coordinates = getPosition();
-
-      this.setState({
-        weather: { location: coordinates },
-      });
-    } else {
-      console.log("error geolocation no supported");
-    }
+ 
   }
   updateUserResponseValue = (e) => {
     this.setState({
