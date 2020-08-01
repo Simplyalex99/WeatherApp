@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "./App.css";
+import "../styles/App.css";
 
-import { setImage } from "./ImageSlider.js";
+
 
 export class NavBar extends Component {
   handleMouseEvent(e) {

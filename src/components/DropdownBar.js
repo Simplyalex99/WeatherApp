@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import "../styles/App.css";
 export class DropdownBar extends Component {
   render() {
     return (
@@ -9,8 +9,7 @@ export class DropdownBar extends Component {
             <p className="questionMark"> i</p>
             <ul>
               <li>
-                Description : Valid city name Toronto, valid zipCode 9 digit
-                with hyphen or 5 digit
+                Description : Enter the city name starting with a capital letter. E.g London.
               </li>
             </ul>
           </li>

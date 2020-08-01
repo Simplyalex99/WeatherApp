@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 //import './server.js'; Module not found when imported could be directory path ../ /
-import "./App.css";
+import "../styles/App.css";
 
 import Title from "./TitlePage.js";
 import SearchButton from "./SearchBar.js";

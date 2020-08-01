@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import "./App.css";
+import "../styles/App.css";
 
 import NavBar from "./NavBar.js";
-import { setImage } from "./ImageSlider.js";
-import defaultImg from "./MountainImages/image1.png";
-// import all images in IMageSlider and return that; refer to history stackOverFlow
+import { setImage } from "../functions/ImageSlider.js";
+import defaultImg from "../images/MountainImages/image1.png";
+
 export class Background extends Component {
   constructor() {
     super();

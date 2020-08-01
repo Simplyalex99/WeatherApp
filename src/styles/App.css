@@ -242,6 +242,15 @@ ul li:hover ul li {
   transform: translateY(8px);
   transform: rotate(-45deg);
 }
+
+
+.weather-description{
+  color:white;
+  font-family: 'Roboto', sans-serif;
+ 
+
+
+}
 .resetBoxContainer {
   display: none;
 }

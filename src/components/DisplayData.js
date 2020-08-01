@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import "../styles/App.css";
 //Add conditional render, pass in props and boolean and call this class in searchBar
 export class DisplayData extends Component {
   closeBox = () => {
@@ -9,12 +9,14 @@ export class DisplayData extends Component {
     const { hitOnEnter, weather, errorResult } = this.props;
     var failComment = <p>Sorry! An unexpected error has occured </p>;
     var successComment = (
-      <div>
-        <p>temp: {weather.temperature}</p>
+      <div className = "weather-description">
+        <p>Country: {weather.country}</p>
+    <p>City: {weather.city}</p>
+        <p>temperature: {weather.temperature} C</p>
         <p>description: {weather.description}</p>
-        <p>
-          location: {weather.location.latitude} , {weather.location.longitude}
-        </p>
+         <p>
+          latitude and longitude: {weather.location.lat} , {weather.location.lon}
+        </p> 
       </div>
     );
     var results = errorResult ? failComment : successComment;
