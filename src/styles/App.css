@@ -16,34 +16,23 @@
   src: url("./Gingham/Gingham.woff2") format("woff2");
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
-
-
-
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
 
 .footer {
-  text-align:center;
+  text-align: center;
 }
 .titlePage {
- font-family:  'Montserrat', sans-serif;
-  
+  font-family: "Montserrat", sans-serif;
   font-stretch: wider;
   position: absolute;
-  color:white;
-  
-  left:40%;
-  font-size:3vw;
-
-  
+  color: white;
+  left: 40%;
+  font-size: 3vw;
 }
 
 .image-container {
-
-
   position: relative;
-
 }
 
 .image-resize {
@@ -70,9 +59,9 @@
   background: none;
   outline: none;
   border: none;
-font-family:'Roboto', sans-serif ;
-padding-top: 2%;
-padding-left: 2px;
+  font-family: "Roboto", sans-serif;
+  padding-top: 2%;
+  padding-left: 2px;
 }
 .search-btn {
   width: 30%;
@@ -88,7 +77,6 @@ padding-left: 2px;
 .search-btn:hover {
   cursor: pointer;
 }
-
 
 .navBar {
   width: 100px;
@@ -160,7 +148,7 @@ ul li:hover ul li {
   width: 20px;
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.4);
-  border: none; /*2px solid black*/
+  border: none; 
   text-align: center;
 }
 .displayBoxContainer {
@@ -176,12 +164,12 @@ ul li:hover ul li {
 }
 
 .displayBox {
-  /* use this for box z-index: 100;  */
+ 
   position: relative;
   margin: 0 auto;
   height: 50%;
   padding: 20px;
-  background: rgb(34, 34, 34); /* for IE */
+  background: rgb(34, 34, 34); /* for Internet Explorer */
   background: rgba(34, 34, 34, 0.75);
 }
 
@@ -206,7 +194,7 @@ ul li:hover ul li {
 .close-btn {
   width: 40px;
   height: 2px;
-  /* background: #fff;*/
+ 
   border-radius: 5px;
   box-shadow: none;
   transition: all 0.5s ease-in-out;
@@ -233,13 +221,9 @@ ul li:hover ul li {
   transform: rotate(-45deg);
 }
 
-
-.weather-description{
-  color:white;
-  font-family: 'Roboto', sans-serif;
- 
-
-
+.weather-description {
+  color: white;
+  font-family: "Roboto", sans-serif;
 }
 .resetBoxContainer {
   display: none;
