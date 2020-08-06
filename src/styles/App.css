@@ -22,25 +22,28 @@
 
 
 
-.column-1 {
-}
-.column-2 {
+
+.footer {
+  text-align:center;
 }
 .titlePage {
  font-family:  'Montserrat', sans-serif;
-  text-align: center;
+  
   font-stretch: wider;
   position: absolute;
-  top:5%;
-  left:30%;
-  right:30%;
+  color:white;
+  
+  left:40%;
+  font-size:3vw;
+
+  
 }
 
 .image-container {
 
-  overflow: hidden;
+
   position: relative;
-  padding-bottom: 37px;
+
 }
 
 .image-resize {
@@ -50,8 +53,8 @@
   position: absolute;
   left: 50%;
   top: 20%;
-  height: 50px;
-  width: 500px;
+  height: 7%;
+  width: 30%;
 
   background: rgba(0, 0, 0, 0.1);
   transform: translate(-50%, -50%);
@@ -60,46 +63,32 @@
 }
 .search_txt {
   color: white;
-  font-size: 25px;
-  text-align: center;
+  font-size: 2vw;
+  text-align: left;
 
   transition: 0.4s;
   background: none;
   outline: none;
   border: none;
 font-family:'Roboto', sans-serif ;
-  line-height: 40px;
+padding-top: 2%;
+padding-left: 2px;
 }
 .search-btn {
-  width: 40px;
-  height: 40px;
+  width: 30%;
+  height: 80%;
   display: flex;
   justify-content: center;
   float: right;
   overflow: hidden;
+  padding-right: 20px;
+  position: relative;
 }
 
 .search-btn:hover {
   cursor: pointer;
 }
-.submit-btn {
-  display: flex;
-  justify-content: left;
-  float: right;
-  padding: 6px;
-  transform: translate(35%, 15%);
-  /*visibility: hidden;*/
-}
 
-.submit-btn-adder {
-  background: rgba(0, 0, 0, 0);
-  border: none;
-  color: rgba(0, 0, 0, 0);
-}
-
-.submit-btn:hover {
-  cursor: pointer;
-}
 
 .navBar {
   width: 100px;
@@ -135,13 +124,14 @@ font-family:'Roboto', sans-serif ;
 }
 
 .infoIconContainer {
-  width: 30%;
+  width: 50%;
 
   top: 10%;
 
-  left: 19%;
+  left: 30%;
   position: absolute;
   transform: translate(-50%, -50%);
+  text-align: left;
 }
 ul {
   list-style: none;
@@ -253,4 +243,11 @@ ul li:hover ul li {
 }
 .resetBoxContainer {
   display: none;
+}
+@media (max-width: 1000px) {
+  .leftButton,
+  .rightButton {
+    height: 5%;
+    width: 3%;
+  }
 }

@@ -9,11 +9,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // add modules
 
 export class SearchBar extends Component {
   constructor() {
-
     super();
 
     this.state = {
-      validData: false,
+      invalidData: false,
       displayDataOnEnter: false,
       closeOnEnter: false,
       userResponse: "",
@@ -29,37 +28,38 @@ export class SearchBar extends Component {
       },
     };
   }
-  getCurrentWeather = async ()=> {
-    
+  getCurrentWeather = async () => {
     const API_KEY = "";
-    var city = this.state.userResponse;
-    let api_url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
-    var response = await fetch(api_url);
-    var body = await response.json();
- const KELVIN = 273;
- 
- this.setState({
-   weather: {description : body.weather[0].description,
-   temperature : Math.floor(body.main.temp - KELVIN),
- location  : body.coord,
-   country : body.sys.country,
-   city: city
-   }, 
-   displayDataOnEnter:true
- });
-     
-   }
- 
+    //Lines 34-36 format user's response to correct format input.
+    var uppercaseFirstLetter = this.state.userResponse.charAt(0).toUpperCase();
+    var lowercaseWord = this.state.userResponse.toLowerCase();
+    var city = uppercaseFirstLetter + lowercaseWord.slice(1);
+    try {
+      let api_url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
+      var response = await fetch(api_url);
+      var body = await response.json();
+      const KELVIN = 273;
 
-  updateSearchMessage(message) {
-    this.setState = {
-      searchMessage: "search by " + message,
-    };
-  }
+      this.setState({
+        weather: {
+          description: body.weather[0].description,
+          temperature: Math.floor(body.main.temp - KELVIN),
+          location: body.coord,
+          country: body.sys.country,
+          city: city,
+        },
+        displayDataOnEnter: true,
+      });
+    } catch (err) {
+      //  updates state property to display to user about unexpected error
 
-  getLocation() {
- 
-  }
+      this.setState({
+        invalidData: true,
+      });
+    }
+  };
+
+  getLocation() {}
   updateUserResponseValue = (e) => {
     this.setState({
       userResponse: e.target.value,
@@ -72,7 +72,7 @@ export class SearchBar extends Component {
 
       weather,
       displayDataOnEnter,
-      validData,
+      invalidData,
       closeOnEnter,
     } = this.state;
     return (
@@ -80,7 +80,7 @@ export class SearchBar extends Component {
         <div className="search_box">
           <input
             type="text"
-            placeholder="Type to search"
+            placeholder="Enter city"
             className="search_txt"
             value={userResponse}
             onChange={this.updateUserResponseValue}
@@ -88,15 +88,9 @@ export class SearchBar extends Component {
           <FontAwesomeIcon
             icon={faSearch}
             className="search-btn"
+            onSubmit={this.getCurrentWeather}
+            onClick={this.getCurrentWeather}
           ></FontAwesomeIcon>
-          <div className="submit-btn">
-            <input
-            className = "submit-btn-adder"
-              type="submit"
-              onSubmit={this.getCurrentWeather}
-              onClick={this.getCurrentWeather}
-            ></input>
-          </div>
         </div>
 
         <DropdownBar />
@@ -104,7 +98,7 @@ export class SearchBar extends Component {
         <DisplayData
           hitOnEnter={displayDataOnEnter}
           weather={weather}
-          errorResult={validData}
+          errorResult={invalidData}
           clickOnCloseButton={closeOnEnter}
         />
       </React.Fragment>
